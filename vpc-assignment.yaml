@@ -8,7 +8,15 @@ myVPC:
     Tags:
       - Key: keyname
         Value: value
-subnetName:
+appserver:
+  Type: AWS::EC2::Subnet
+  Properties:
+    AvailabilityZone: zone-id
+    VpcId: vpc-id
+    Tags:
+      - Key: keyname
+        Value: value
+webserver:
   Type: AWS::EC2::Subnet
   Properties:
     AvailabilityZone: zone-id
@@ -17,16 +25,7 @@ subnetName:
     Tags:
       - Key: keyname
         Value: value
-subnetName:
-  Type: AWS::EC2::Subnet
-  Properties:
-    AvailabilityZone: zone-id
-    VpcId: vpc-id
-    CidrBlock: --.--.--.--/--
-    Tags:
-      - Key: keyname
-        Value: value
-subnetName:
+dbserver:
   Type: AWS::EC2::Subnet
   Properties:
     AvailabilityZone: zone-id
