@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: 
+Description: 
+myVPC:
+  Type: AWS::EC2::VPC
+  Properties:
+    CidrBlock: --.--.--.--/--
+    EnableDnsSupport: true
+    Tags:
+      - Key: keyname
+        Value: value
+subnetName:
+  Type: AWS::EC2::Subnet
+  Properties:
+    AvailabilityZone: zone-id
+    VpcId: vpc-id
+    CidrBlock: --.--.--.--/--
+    Tags:
+      - Key: keyname
+        Value: value
+subnetName:
+  Type: AWS::EC2::Subnet
+  Properties:
+    AvailabilityZone: zone-id
+    VpcId: vpc-id
+    CidrBlock: --.--.--.--/--
+    Tags:
+      - Key: keyname
+        Value: value
+subnetName:
+  Type: AWS::EC2::Subnet
+  Properties:
+    AvailabilityZone: zone-id
+    VpcId: vpc-id
+    CidrBlock: --.--.--.--/--
+    Tags:
+      - Key: keyname
+        Value: value
