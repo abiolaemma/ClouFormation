@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: "ec2VPC instance automation for our dev env"
+Description: "ec2 instance automation for our dev env"
 Metadata: {}
 
 Parameters: {}
@@ -19,30 +19,40 @@ Resources:
       - Key: stack
         Value: production
 
-  # devwebserver:
-  #   Type: AWS::EC2::Instance
-  #   Properties:
-  #     KeyName: new
-  #     ImageId: ami-0fc5d935ebf8bc3bc
-  #     InstanceType: t2.micro
-  #     Monitoring: true
-  #     SecurityGroupIds:
-  #       - sg-090fc5db495f0ef96
-  #     UserData: !Base64 |
-  #       #!/bin/bash 
-  #       sudo su
-  #       apt update -y
-  #       apt -y install apache2
-  #       systemctl start apache2
-  #       systemctl enable apache2
-  #       apt install wget -y
-  #       wget https://github.com/awanmbandi/google-cloud-projects/raw/jjtech-flix-app/jjtech-streaming-application-v1.zip 
-  #       apt install unzip -y
-  #       unzip jjtech-streaming-application-v1.zip
-  #       rm -f /var/www/html/index.html
-  #       cp -rf jjtech-streaming-application-v1/* /var/www/html/
-  #     Tags:
-  #       - Key: Name
-  #         Value: devwebserver
+  mySubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: myVPC
+        Ref: myVPC
+        CidrBlock: 10.0.0.0/24
+        AvailabilityZone: "us-east-1a"
+        Tags:
+      - Key: stack
+        Value: production 
+  devwebserver:
+    Type: AWS::EC2::Instance
+    Properties:
+      KeyName: new
+      ImageId: ami-0fc5d935ebf8bc3bc
+      InstanceType: t2.micro
+      Monitoring: true
+      SecurityGroupIds:
+        - sg-090fc5db495f0ef96
+      UserData: !Base64 |
+        #!/bin/bash 
+        sudo su
+        apt update -y
+        apt -y install apache2
+        systemctl start apache2
+        systemctl enable apache2
+        apt install wget -y
+        wget https://github.com/awanmbandi/google-cloud-projects/raw/jjtech-flix-app/jjtech-streaming-application-v1.zip 
+        apt install unzip -y
+        unzip jjtech-streaming-application-v1.zip
+        rm -f /var/www/html/index.html
+        cp -rf jjtech-streaming-application-v1/* /var/www/html/
+      Tags:
+        - Key: Name
+          Value: devwebserver
 
 Outputs: {}
