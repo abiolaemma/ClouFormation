@@ -1,21 +1,21 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: This template provisions the webserver, db and sg
+Description: This template provisions the webserver, db sg
 Metadata: {}
 
 Parameters:
 # Webserver sg para
   DevWebserverSgGroupName:
-    Description: This is for dev webserver Sggroup name
+    Description: Pls provide your dev webserver group name
     Type: String
     Default: dev-sg
   DevWebserverSgGDesc:
-    Description: This is for dev webserver Sggroup description
+    Description: Pls provide your dev webserver group description
     Type: String
     Default: enabling SSH and HTTP
 
 # Db webserver sg parameters
   DevDbWebserverSgGroupName:
-    Description: This is for devDb webserver Sggroup name
+    Description: Pls provide your devDB webserver group description
     Type: String
     Default: devDb-sg
   DevDbWebserverSgGDesc:
@@ -44,7 +44,7 @@ Resources:
         - IpProtocol: tcp
           FromPort: 22
           ToPort: 22
-          CidrIp: 0.0.0.0/0
+          CidrIp: 0.0.0.0/0 #Ip address of the particular developer or list of developer. Or we couldbe using the bastion host connecting through port 22 above
       SecurityGroupEgress:
         - IpProtocol: tcp
           FromPort: 80
